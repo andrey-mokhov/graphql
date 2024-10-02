@@ -10,6 +10,7 @@ use Andi\GraphQL\TypeRegistryInterface;
 use GraphQL\Type\Definition as Webonyx;
 use ReflectionMethod;
 use Spiral\Attributes\ReaderInterface;
+use Spiral\Core\Attribute\Proxy;
 use Spiral\Core\InvokerInterface;
 use Spiral\Core\ScopeInterface;
 
@@ -24,7 +25,9 @@ abstract class AbstractObjectFieldByReflectionMethodMiddleware extends AbstractF
         ReaderInterface $reader,
         TypeRegistryInterface $typeRegistry,
         ArgumentResolverInterface $argumentResolver,
+        #[Proxy]
         private readonly ScopeInterface $scope,
+        #[Proxy]
         private readonly InvokerInterface $invoker,
     ) {
         parent::__construct($reader, $typeRegistry, $argumentResolver);
